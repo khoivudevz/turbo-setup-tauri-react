@@ -3,7 +3,7 @@
 		"welcome": "Welcome to React, tailwindcss and more",
 		"home": {
 			"heroTitle": "Turbo React Starter",
-			"heroDesc": "A modern, blazing-fast React + TypeScript + Tailwind CSS + Tauri starter with i18n, TurboRepo, and more. Build beautiful web and cross-platform desktop apps, faster.",
+			"heroDesc": "A modern, blazing-fast Tauri + React + TypeScript + Tailwind CSS starter with i18n, TurboRepo, and more. Build beautiful web and cross-platform desktop apps, faster.",
 			"modalDemo": "Modal Demo",
 			"modalDemoMessage": "Are you ready to get started?",
 			"modalDemoName": "TURBO SETUP",
