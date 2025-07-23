@@ -1,6 +1,6 @@
-# Turbo Setup React + TypeScript + Tailwind
+# Turbo Setup Tauri + React + TypeScript + Tailwind
 
-A modern and efficient React starter template with TypeScript, Tailwind CSS, and various development tools pre-configured.
+A modern and efficient Tauri starter template with React, TypeScript, Tailwind CSS, and various development tools pre-configured.
 
 ## 🚀 Features
 
