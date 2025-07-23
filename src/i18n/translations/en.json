@@ -1,0 +1,77 @@
+{
+	"translation": {
+		"welcome": "Welcome to React, tailwindcss and more",
+		"home": {
+			"heroTitle": "Turbo React Starter",
+			"heroDesc": "A modern, blazing-fast React + TypeScript + Tailwind CSS + Tauri starter with i18n, TurboRepo, and more. Build beautiful web and cross-platform desktop apps, faster.",
+			"modalDemo": "Modal Demo",
+			"modalDemoMessage": "Are you ready to get started?",
+			"modalDemoName": "TURBO SETUP",
+			"githubCta": "Star on GitHub",
+			"visitHomepage": "Visit TURBO SETUP",
+			"features": {
+				"react": {
+					"title": "React 19 + TypeScript",
+					"desc": "Modern React with full TypeScript support."
+				},
+				"tailwind": {
+					"title": "Tailwind CSS",
+					"desc": "Utility-first CSS for rapid UI development."
+				},
+				"vite": {
+					"title": "Vite",
+					"desc": "Next-generation frontend tooling for fast builds."
+				},
+				"eslint": {
+					"title": "ESLint",
+					"desc": "Code linting for consistent code quality."
+				},
+				"prettier": {
+					"title": "Prettier",
+					"desc": "Automated code formatting for style consistency."
+				},
+				"husky": {
+					"title": "Husky & lint-staged",
+					"desc": "Pre-commit hooks for linting and formatting your code."
+				},
+				"commitlint": {
+					"title": "Commitlint",
+					"desc": "Enforces conventional commit messages."
+				},
+				"zustand": {
+					"title": "Zustand",
+					"desc": "Simple and fast state management."
+				},
+				"router": {
+					"title": "React Router",
+					"desc": "Declarative routing for React apps."
+				},
+				"dayjs": {
+					"title": "Day.js",
+					"desc": "Lightweight date manipulation library."
+				},
+				"axios": {
+					"title": "Axios",
+					"desc": "Promise-based HTTP client for the browser."
+				},
+				"swr": {
+					"title": "SWR",
+					"desc": "React Hooks library for data fetching with caching and revalidation."
+				},
+				"nuqs": {
+					"title": "nuqs",
+					"desc": "Type-safe URL state management with React hooks."
+				},
+				"tauri": {
+					"title": "Tauri",
+					"desc": "Cross-platform desktop applications with Rust backend and web frontend."
+				}
+			}
+		},
+		"search": {
+			"placeholder": "Type your search...",
+			"clear": "Clear",
+			"result_label": "Search text:"
+		}
+	}
+}
