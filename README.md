@@ -29,7 +29,7 @@ A modern and efficient Tauri starter template with React, TypeScript, Tailwind C
 # Clone the repository
 
 ```
-git clone https://github.com/khoivudevz/turbo-setup-react-ts-tailwind
+git clone https://github.com/khoivudevz/turbo-setup-tauri-react
 ```
 
 # Install dependencies
