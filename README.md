@@ -16,6 +16,10 @@ A modern and efficient Tauri starter template with React, TypeScript, Tailwind C
 - 📅 [Day.js](https://day.js.org/) for date manipulation
 - 🔄 [Axios](https://axios-http.com/) for HTTP requests
 - 🔄 [SWR](https://swr.vercel.app/) for data fetching and caching
+- 🔗 [nuqs](https://nuqs.47ng.com/) for URL query state management
+- 🎭 [rc-dialog](https://dialog-react-component.vercel.app/) for modal and dialog components
+- 💅 [styled-components](https://styled-components.com/) for CSS-in-JS styling
+- 🎨 [tailwind-merge](https://github.com/dcastil/tailwind-merge) for merging Tailwind CSS classes
 - 🖥️ [Tauri](https://tauri.app/) for cross-platform desktop applications
 
 ## 🛠️ Prerequisites
@@ -72,12 +76,12 @@ src/
 ├── components/       # Reusable UI components
 ├── configs/          # Configuration files (env, http, app urls)
 ├── constants/        # Application constants and shared values
-├── hooks/            # Custom React hooks (useNews, useFetch, useMutation, useKeyPress)
+├── hooks/            # Custom React hooks (useNews, useAuth, useFetch, useMutation, useKeyPress)
 ├── layouts/          # Layout components and templates
 ├── pages/            # Page components
 ├── providers/        # React context providers
 ├── router/           # Routing configuration
-├── services/         # Browser services (cookies, localStorage)
+├── services/         # Browser services (cookies, localStorage, data persistence)
 ├── store/            # State management with Zustand
 ├── styles/           # Global styles and Tailwind imports
 ├── types/            # TypeScript type definitions
@@ -136,6 +140,55 @@ The project includes two TypeScript configurations:
 - ESLint is configured with TypeScript and React rules
 - Prettier is set up with custom formatting rules
 - Pre-commit hooks ensure code quality
+
+## 🗄️ Browser Services
+
+The project includes browser services for data persistence and session management:
+
+### Cookie Service
+
+Handles authentication token storage and retrieval:
+
+```typescript
+import {saveAuth, removeAuth, getAuth} from '@/services/cookie.service'
+
+// Save authentication token
+saveAuth('your-jwt-token')
+
+// Retrieve authentication token
+const token = getAuth()
+
+// Remove authentication token
+removeAuth()
+```
+
+### Local Storage Service
+
+Provides utilities for localStorage operations:
+
+```typescript
+import {
+	localStorageServices,
+	localStorageKey,
+} from '@/services/localStorage.service'
+
+// Save user data
+const userData = {id: '1', name: 'John Doe'}
+localStorageServices.setLocalStorage(userData, localStorageKey.USER_INFOR)
+
+// Retrieve user data
+const user = localStorageServices.getLocalStorage(localStorageKey.USER_INFOR)
+
+// Remove user data
+localStorageServices.removeLocalStorage(localStorageKey.USER_INFOR)
+```
+
+### Available Storage Keys
+
+The service includes predefined keys for consistent data storage:
+
+- `USER_INFOR`: User profile information
+- And other application-specific keys as needed
 
 ## 🌍 Internationalization (i18n)
 
@@ -219,6 +272,135 @@ The `useNews` hook provides:
 - Loading state management
 - Error handling
 - Type-safe data access
+
+## 🔐 Authentication System
+
+This project includes a complete authentication system built with Zustand for state management and provides both cookie and localStorage persistence.
+
+### Authentication Hook
+
+The `useAuth` hook provides a simple interface for authentication:
+
+```typescript
+import useAuth from '@/hooks/useAuth'
+
+const MyComponent = () => {
+  const {
+    user,
+    isAuthenticated,
+    login,
+    logout,
+    userName,
+    userEmail,
+    userId
+  } = useAuth()
+
+  const handleLogin = async () => {
+    // After successful API authentication
+    const userData = {
+      id: '1',
+      email: 'user@example.com',
+      name: 'John Doe',
+      avatar: 'https://example.com/avatar.jpg',
+      role: 'user'
+    }
+    const token = 'your-jwt-token'
+
+    login(userData, token)
+  }
+
+  const handleLogout = () => {
+    logout()
+  }
+
+  return (
+    <div>
+      {isAuthenticated ? (
+        <div>
+          <p>Welcome, {userName}!</p>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      ) : (
+        <button onClick={handleLogin}>Login</button>
+      )}
+    </div>
+  )
+}
+```
+
+### Authentication Features
+
+- **Persistent Sessions**: Automatic session persistence using cookies and localStorage
+- **Type Safety**: Full TypeScript support with defined user and auth types
+- **State Management**: Zustand store for global authentication state
+- **Helper Functions**: Convenient access to user properties and authentication status
+- **Auto-initialization**: Automatic session restoration on app load
+
+### Authentication Types
+
+The authentication system includes comprehensive TypeScript types:
+
+```typescript
+interface User {
+	id: string
+	email: string
+	name: string
+	avatar?: string
+	role?: string
+}
+
+interface LoginCredentials {
+	email: string
+	password: string
+}
+```
+
+## 🎭 Modal System
+
+The project includes a robust modal management system using rc-dialog and Zustand.
+
+### Modal Provider
+
+All modals are managed through the `ModalsProvider` component:
+
+```typescript
+import ModalsProvider from '@/providers/ModalsProvider'
+
+// Wrap your app with the provider
+<ModalsProvider>
+  <App />
+</ModalsProvider>
+```
+
+### Using Modals
+
+Modals are managed through the modal store:
+
+```typescript
+import useModalStore from '@/store/useModal.store'
+import { MODAL_KEYS } from '@/constants/modals.constant'
+
+const MyComponent = () => {
+  const { openModal, closeModal } = useModalStore()
+
+  const handleOpenModal = () => {
+    openModal(MODAL_KEYS.DEMO_MODAL, {
+      title: 'Demo Modal',
+      data: 'some data'
+    })
+  }
+
+  const handleCloseModal = () => {
+    closeModal(MODAL_KEYS.DEMO_MODAL)
+  }
+
+  return (
+    <button onClick={handleOpenModal}>
+      Open Modal
+    </button>
+  )
+}
+```
 
 ## 🤝 Contributing
 
